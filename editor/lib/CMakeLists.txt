@@ -1,4 +1,4 @@
-set(name "editor-lib")
+set(name "gloom-lib")
 
 set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} $ENV{QT_HOME}/lib/cmake)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -20,3 +20,5 @@ add_library(${name} ${src_files})
 target_link_libraries(${name} Qt5::Widgets)
 target_link_libraries(${name} Qt5::Core)
 target_link_libraries(${name} Qt5::Gui)
+
+set_target_properties(${name} PROPERTIES FOLDER "gloom")
