@@ -6,4 +6,6 @@ set_property(GLOBAL PROPERTY AUTOMOC_FOLDER generated)
 set_property(GLOBAL PROPERTY AUTOGEN_TARGETS_FOLDER generated)
 set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER generated)
 
+include("cmake/googletest.cmake")
+
 add_subdirectory("editor")
