@@ -23,5 +23,10 @@ The user can place and edit rooms, tokens and monsters in a scenario - and write
 ### Monster placement
 - [ ] Browse available monsters
 - [ ] Place monsters in scene
-- [ ] Move tokens in scene
-- [ ] Snapping placement for tokens
+- [ ] Move monsters in scene
+- [ ] Snapping placement for monsters
+- [ ] Set monster details for player count
+
+### Serialization
+- [ ] Save/load scene to json
+- [ ] Export to pdf/image
