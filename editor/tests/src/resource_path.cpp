@@ -2,18 +2,18 @@
 #include "src/model/resource_path.h"
 
 TEST(resource_path, scenario_tiles) {
-	gloom::resources::scenario_tiles resources;
-	EXPECT_EQ(resources.count(), 60);
+	gloom::resources::scenario_tiles tiles;
+	EXPECT_EQ(tiles.count(), 60);
 }
 
 TEST(resource_path, scenario_tokens) {
-	gloom::resources::scenario_tokens resources;
-	EXPECT_EQ(resources.count(), 53);
+	gloom::resources::scenario_tokens tokens;
+	EXPECT_EQ(tokens.count(), 53);
 }
 
 TEST(resource_path, monster_tokens) {
-	gloom::resources::monster_tokens resources;
-	EXPECT_EQ(resources.count(), 70);
+	gloom::resources::monster_tokens monsters;
+	EXPECT_EQ(monsters.count(), 70);
 }
 
 TEST(resource_path, for_each) {

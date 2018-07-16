@@ -48,7 +48,4 @@ target_link_libraries(${name} Qt5::Gui)
 
 set_target_properties(${name} PROPERTIES FOLDER "gloom")
 
-# works, but don't want to run each time we run cmake
-#execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/editor/resources ${CMAKE_BINARY_DIR}/editor/resources)
-
 include("../scripts/cmake/copy_resources.cmake")

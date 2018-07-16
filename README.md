@@ -1,18 +1,27 @@
 # gloom
-###Prerequisites: 
+### Prerequisites: 
 
     * `QT_HOME`Qt install dir
     * `QT_DLL_DIR` (`QT_HOME/bin`) added to PATH
 
 
-### Solar System Exploration, 1950s – 1960s
+# Minimum Viable Product
+The user can place and edit rooms, tokens and monsters in a scenario - and write an introduction. The composed scenario can be serialized/deserialized between sessions. The scenario can be exported to a format that can be consumed by an average user (image/pdf).
 
-- [ ] Mercury
-- [x] Venus
-- [x] Earth (Orbit/Moon)
-- [x] Mars
-- [ ] Jupiter
-- [ ] Saturn
-- [ ] Uranus
-- [ ] Neptune
-- [ ] Comet Haley
+### Room placement
+- [ ] Browse available rooms
+- [ ] Place room in scene
+- [ ] Move rooms in scene
+- [ ] Rooms can connect via snapping
+
+### Token placement
+- [ ] Browse available tokens
+- [ ] Place tokens in scene
+- [ ] Move tokens in scene
+- [ ] Snapping placement for tokens
+
+### Monster placement
+- [ ] Browse available monsters
+- [ ] Place monsters in scene
+- [ ] Move tokens in scene
+- [ ] Snapping placement for tokens

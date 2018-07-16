@@ -7,5 +7,6 @@ set_property(GLOBAL PROPERTY AUTOGEN_TARGETS_FOLDER generated)
 set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER generated)
 
 include("cmake/googletest.cmake")
+include("cmake/cotire.cmake")
 
 add_subdirectory("editor")
