@@ -1,5 +1,5 @@
 #pragma once
-#include "../model/resource_collection.h"
+#include "resource_collection.h"
 
 namespace gloom {
 	class resource_browser : public QScrollArea {

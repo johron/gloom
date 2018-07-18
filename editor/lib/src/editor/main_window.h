@@ -1,6 +1,6 @@
 #pragma once
-#include "scenario_view.h"
-#include "../model/editor.h"
+#include "../scenario/view/scenario_view.h"
+#include "editor.h"
 
 namespace Ui {
 	class main_window;
@@ -14,7 +14,7 @@ namespace gloom {
 
 	private:
 		editor& m_editor;
-		scenario_view m_scenario_view;
 		std::unique_ptr<Ui::main_window> m_ui;
+		std::unique_ptr<scenario_view> m_scenario_view;
 	};
 }

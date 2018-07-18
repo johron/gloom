@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <QMainWindow>
-#include "src/view/main_window.h"
-#include "src/model/editor.h"
+#include "src/editor/main_window.h"
+#include "src/editor/editor.h"
 
 int main(int argc, char** argv) {
 	QApplication application(argc, argv);

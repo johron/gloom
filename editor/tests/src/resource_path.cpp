@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "src/model/resource_collection.h"
+#include "src/resources/resource_collection.h"
 
 TEST(resource_collection, scenario_tiles) {
 	gloom::resources::scenario_tiles tiles;
@@ -22,22 +22,23 @@ TEST(resource_collection, empty) {
 	EXPECT_TRUE(collection.empty());
 }
 
-TEST(resource_collection, for_each_resource) {
-	gloom::resources::scenario_tiles resources;
+TEST(resource_collection, iterators) {
+	gloom::resources::scenario_tiles collection;
 	size_t count(0);
-	auto file_counter = [&count](const QString& filename) { ++count; };
-	resources.for_each_resource(file_counter);
-	EXPECT_EQ(count, resources.count());
+	for (const auto& resource : collection) {
+		++count;
+	}
+	EXPECT_EQ(count, collection.count());
 }
 
 TEST(resource_collection, resource_path) {
 	gloom::resources::scenario_tiles tiles;
-	const auto resource_path = tiles.resource(0);
-	EXPECT_TRUE(QFile::exists(resource_path));
+	const auto resource_path = tiles[0];
+	EXPECT_TRUE(QFile::exists(resource_path.original()));
 }
 
 TEST(resource_collection, thumbnail_path) {
 	gloom::resources::scenario_tiles tiles;
-	const auto resource_path = tiles.thumbnail(0);
-	EXPECT_TRUE(QFile::exists(resource_path));
+	const auto resource_path = tiles[0];
+	EXPECT_TRUE(QFile::exists(resource_path.thumbnail()));
 }

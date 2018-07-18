@@ -13,32 +13,37 @@ set(CMAKE_AUTORCC ON)
 
 set(qrc_files "")
 
-set(src_view
-	"src/view/main_window.cpp"
-	"src/view/main_window.h"
-	"src/view/main_window.ui"
-	"src/view/resource_browser.h"
-	"src/view/resource_browser.cpp"
-	"src/view/scenario_view.cpp"
-	"src/view/scenario_view.h")
+set(src_editor
+	"src/editor/editor.cpp"
+	"src/editor/editor.h"
+	"src/editor/main_window.cpp"
+	"src/editor/main_window.h"
+	"src/editor/main_window.ui"
+	"src/editor/settings.h")
+
+set(src_resources
+	"src/resources/resource_browser.cpp"
+	"src/resources/resource_browser.h"
+	"src/resources/resource_collection.h")
 
 set(src_scenario
-	"src/model/scenario/scenario.h"
-	"src/model/scenario/room.h"
-	"src/model/scenario/token.h"
-	"src/model/scenario/monster.h")
+	"src/scenario/scenario.cpp"
+	"src/scenario/scenario.h"
+	"src/scenario/room.cpp"
+	"src/scenario/room.h"
+	"src/scenario/token.h"
+	"src/scenario/monster.h")
 
-set(src_commands
-	"src/model/commands/place_room.h"
-	"src/model/commands/place_token.h"
-	"src/model/commands/place_monster.h")
+set(src_scenario_view
+	"src/scenario/view/room_view.cpp"
+	"src/scenario/view/room_view.h"
+	"src/scenario/view/scenario_view.cpp"
+	"src/scenario/view/scenario_view.h")
 
-set(src_model
-	"src/model/resource_collection.h"
-	"src/model/settings.cpp"
-	"src/model/settings.h"
-	"src/model/editor.cpp"
-	"src/model/editor.h")
+set(src_scenario_commands
+	"src/scenario/commands/place_room.h"
+	"src/scenario/commands/place_token.h"
+	"src/scenario/commands/place_monster.h")
 
 set(src_util
 	"src/util/flow_layout.cpp"
@@ -49,25 +54,26 @@ set(readme
 
 set(all_sources
 	${qrc_files}
-	${src_precompiled}
-	${src_view}
-	${src_model}
+	${src_editor}
+	${src_resources}
 	${src_scenario}
-	${src_commands}
+	${src_scenario_view}
+	${src_scenario_commands}
+	${src_precompiled}
 	${src_util}
 	${readme})
 
 add_library(${name} ${all_sources})
 
-source_group("src\\view" FILES ${src_view})
-source_group("src\\model" FILES ${src_model})
-source_group("src\\model\\scenario" FILES ${src_scenario})
-source_group("src\\model\\commands" FILES ${src_commands})
-source_group("src\\model" FILES ${src_model})
+source_group("src\\editor" FILES ${src_editor})
+source_group("src\\resources" FILES ${src_resources})
+source_group("src\\scenario" FILES ${src_scenario})
+source_group("src\\scenario\\view" FILES ${src_scenario_view})
+source_group("src\\scenario\\commands" FILES ${src_scenario_commands})
 source_group("src\\util" FILES ${src_util})
 source_group("src\\precompiled" FILES ${src_precompiled})
-source_group("qrc" FILES ${qrc_files})
-source_group("readme" FILES ${readme})
+source_group("files\\qrc" FILES ${qrc_files})
+source_group("files\\readme" FILES ${readme})
 
 target_link_libraries(${name} Qt5::Widgets)
 target_link_libraries(${name} Qt5::Core)
@@ -76,6 +82,8 @@ target_link_libraries(${name} Qt5::Gui)
 set_target_properties(${name} PROPERTIES FOLDER "gloom")
 set_target_properties(${name} PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT ${src_precompiled})
 set_target_properties(${name} PROPERTIES COTIRE_ADD_UNITY_BUILD FALSE)
+set_target_properties(${name} PROPERTIES MAKE_CXX_STANDARD 17)
+set_target_properties(${name} PROPERTIES CMAKE_CXX_STANDARD_REQUIRED ON)
 
 cotire(${name})
 

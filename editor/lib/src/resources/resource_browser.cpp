@@ -9,13 +9,13 @@ namespace gloom {
 		auto content = new QWidget();
 		content->setLayout(new util::flow_layout());
 		
-		for (int i=0; i<resources.count(); ++i) {
-			auto path = resources.thumbnail(i);
-			auto button = new QPushButton(QPixmap(path), "");
+		for (const auto& resource : resources) {
+			auto button = new QPushButton(QPixmap(resource.thumbnail()), "");
 			button->setIconSize({ 60, 60 });
 			button->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 			content->layout()->addWidget(button);
 		}
+
 		setWidget(content);
 	}
 }
