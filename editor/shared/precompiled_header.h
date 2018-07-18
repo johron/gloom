@@ -12,6 +12,10 @@
 #include <QString>
 #include <QMainWindow>
 #include <QSettings>
+#include <QMessageBox>
 
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
+
+#include <QJsonObject>
+#include <QJsonArray>

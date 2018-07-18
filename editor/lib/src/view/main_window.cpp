@@ -15,6 +15,9 @@ namespace gloom {
 		m_ui->rooms->layout()->addWidget(new resource_browser(resources::scenario_tiles()));
 		m_ui->tokens->layout()->addWidget(new resource_browser(resources::scenario_tokens()));
 		m_ui->monsters->layout()->addWidget(new resource_browser(resources::monster_tokens()));
+
+		scenario s;
+		s.deserialize(QJsonObject());
 	}
 
 	main_window::~main_window() { 
