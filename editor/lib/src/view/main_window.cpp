@@ -1,5 +1,6 @@
 #include "main_window.h"
 #include "ui_main_window.h"
+#include "resource_browser.h"
 
 namespace gloom {
 	main_window::main_window(editor & editor)
@@ -10,6 +11,8 @@ namespace gloom {
 
 		restoreGeometry(m_editor.m_settings.value("window/geometry").toByteArray());
 		restoreState(m_editor.m_settings.value("window/state").toByteArray());
+
+		m_ui->test_area->layout()->addWidget(new resource_browser(resources::scenario_tiles(), this));
 	}
 
 	main_window::~main_window() { 

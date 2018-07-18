@@ -1,11 +1,10 @@
-# gloom
-### Prerequisites: 
-
+## gloom
+### Install notes: 
     * `QT_HOME`Qt install dir
     * `QT_DLL_DIR` (`QT_HOME/bin`) added to PATH
 
 
-# Minimum Viable Product
+## Minimum Viable Product
 The user can place and edit rooms, tokens and monsters in a scenario - and write an introduction. The composed scenario can be serialized/deserialized between sessions. The scenario can be exported to a format that can be consumed by an average user (image/pdf).
 
 ### Room placement
