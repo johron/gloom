@@ -8,19 +8,19 @@
 The user can place and edit rooms, tokens and monsters in a scenario - and write an introduction. The composed scenario can be serialized/deserialized between sessions. The scenario can be exported to a format that can be consumed by an average user (image/pdf).
 
 ### Room placement
-- [ ] Browse available rooms
+- [x] Browse available rooms
 - [ ] Place room in scene
 - [ ] Move rooms in scene
 - [ ] Rooms can connect via snapping
 
 ### Token placement
-- [ ] Browse available tokens
+- [x] Browse available tokens
 - [ ] Place tokens in scene
 - [ ] Move tokens in scene
 - [ ] Snapping placement for tokens
 
 ### Monster placement
-- [ ] Browse available monsters
+- [x] Browse available monsters
 - [ ] Place monsters in scene
 - [ ] Move monsters in scene
 - [ ] Snapping placement for monsters
