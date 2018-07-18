@@ -3,18 +3,18 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QDebug>
+#include "../util/flow_layout.h"
 
 namespace gloom {
 	resource_browser::resource_browser(resource_collection&& resources, QWidget* parent)
 		: QWidget(parent) { 
-		setLayout(new QVBoxLayout());
-
-		const auto dir = QDir::current().absolutePath();
+		setLayout(new util::flow_layout());
 
 		for (int i=0; i<resources.count(); ++i) {
 			auto path = resources.thumbnail(i);
-			auto button = new QPushButton(QPixmap(path), "test");
-			button->setIconSize({ 50, 50 });
+			auto button = new QPushButton(QPixmap(path), "");
+			button->setIconSize({ 60, 60 });
+			button->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 			layout()->addWidget(button);
 		}
 	}

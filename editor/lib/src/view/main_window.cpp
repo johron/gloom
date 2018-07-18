@@ -12,7 +12,9 @@ namespace gloom {
 		restoreGeometry(m_editor.m_settings.value("window/geometry").toByteArray());
 		restoreState(m_editor.m_settings.value("window/state").toByteArray());
 
-		m_ui->test_area->layout()->addWidget(new resource_browser(resources::scenario_tiles(), this));
+		m_ui->rooms->layout()->addWidget(new resource_browser(resources::scenario_tiles()));
+		m_ui->tokens->layout()->addWidget(new resource_browser(resources::scenario_tokens()));
+		m_ui->monsters->layout()->addWidget(new resource_browser(resources::monster_tokens()));
 	}
 
 	main_window::~main_window() { 

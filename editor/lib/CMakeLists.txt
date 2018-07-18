@@ -29,6 +29,9 @@ set(src_model
 	"src/model/editor.cpp"
 	"src/model/editor.h")
 
+set(src_util
+	"src/util/flow_layout.cpp"
+	"src/util/flow_layout.h")
 
 set(readme
 	"../../readme.md")
@@ -37,12 +40,14 @@ set(all_sources
 	${qrc_files}
 	${src_view}
 	${src_model}
+	${src_util}
 	${readme})
 
 add_library(${name} ${all_sources})
 
 source_group("src\\view" FILES ${src_view})
 source_group("src\\model" FILES ${src_model})
+source_group("src\\util" FILES ${src_util})
 source_group("qrc" FILES ${qrc_files})
 source_group("readme" FILES ${readme})
 
