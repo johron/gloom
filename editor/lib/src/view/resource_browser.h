@@ -1,6 +1,4 @@
 #pragma once
-#include <QWidget>
-#include <QScrollArea>
 #include "../model/resource_collection.h"
 
 namespace gloom {

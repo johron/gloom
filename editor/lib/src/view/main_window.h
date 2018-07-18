@@ -1,8 +1,5 @@
 #pragma once
-#include <QMainWindow>
-#include <QSettings>
 #include "scenario_view.h"
-
 #include "../model/editor.h"
 
 namespace Ui {

@@ -1,6 +1,4 @@
 #pragma once
-#include <QDir>
-#include <QString>
 
 namespace gloom {
 	// this is written with the assumption that resources won't change after application start.
@@ -19,14 +17,14 @@ namespace gloom {
 		}
 
 		template <typename T>
-		void for_each_resource(const T& functor) {
+		void for_each_resource(const T& functor) const {
 			for (const auto& file : m_resources.entryList(QDir::Filter::Files)) {
 				functor(file);
 			}
 		}
 
 		template <typename T>
-		void for_each_thumbnail(const T& functor) {
+		void for_each_thumbnail(const T& functor) const {
 			for (const auto& file : m_thumbnails.entryList(QDir::Filter::Files)) {
 				functor(file);
 			}

@@ -1,6 +1,4 @@
 #pragma once
-#include <QGraphicsScene>
-#include <QGraphicsPixmapItem>
 
 namespace gloom {
 	class scenario_view : public QGraphicsScene {

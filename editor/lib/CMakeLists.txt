@@ -49,6 +49,7 @@ set(readme
 
 set(all_sources
 	${qrc_files}
+	${src_precompiled}
 	${src_view}
 	${src_model}
 	${src_scenario}
@@ -64,6 +65,7 @@ source_group("src\\model\\scenario" FILES ${src_scenario})
 source_group("src\\model\\commands" FILES ${src_commands})
 source_group("src\\model" FILES ${src_model})
 source_group("src\\util" FILES ${src_util})
+source_group("src\\precompiled" FILES ${src_precompiled})
 source_group("qrc" FILES ${qrc_files})
 source_group("readme" FILES ${readme})
 
@@ -72,5 +74,9 @@ target_link_libraries(${name} Qt5::Core)
 target_link_libraries(${name} Qt5::Gui)
 
 set_target_properties(${name} PROPERTIES FOLDER "gloom")
+set_target_properties(${name} PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT ${src_precompiled})
+set_target_properties(${name} PROPERTIES COTIRE_ADD_UNITY_BUILD FALSE)
+
+cotire(${name})
 
 include("../scripts/cmake/copy_resources.cmake")

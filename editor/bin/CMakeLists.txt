@@ -10,3 +10,7 @@ target_link_libraries(${name} "gloom-lib")
 target_include_directories(${name} PUBLIC  "../lib")
 
 set_target_properties(${name} PROPERTIES FOLDER "gloom")
+set_target_properties(${name} PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT ${src_precompiled})
+set_target_properties(${name} PROPERTIES COTIRE_ADD_UNITY_BUILD FALSE)
+
+cotire(${name})

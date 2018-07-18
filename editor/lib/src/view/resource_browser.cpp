@@ -1,8 +1,4 @@
 #include "resource_browser.h"
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QPushButton>
-#include <QDebug>
 #include "../util/flow_layout.h"
 
 namespace gloom {
