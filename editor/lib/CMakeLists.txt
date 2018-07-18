@@ -22,6 +22,17 @@ set(src_view
 	"src/view/scenario_view.cpp"
 	"src/view/scenario_view.h")
 
+set(src_scenario
+	"src/model/scenario/scenario.h"
+	"src/model/scenario/room.h"
+	"src/model/scenario/token.h"
+	"src/model/scenario/monster.h")
+
+set(src_commands
+	"src/model/commands/place_room.h"
+	"src/model/commands/place_token.h"
+	"src/model/commands/place_monster.h")
+
 set(src_model
 	"src/model/resource_collection.h"
 	"src/model/settings.cpp"
@@ -40,12 +51,17 @@ set(all_sources
 	${qrc_files}
 	${src_view}
 	${src_model}
+	${src_scenario}
+	${src_commands}
 	${src_util}
 	${readme})
 
 add_library(${name} ${all_sources})
 
 source_group("src\\view" FILES ${src_view})
+source_group("src\\model" FILES ${src_model})
+source_group("src\\model\\scenario" FILES ${src_scenario})
+source_group("src\\model\\commands" FILES ${src_commands})
 source_group("src\\model" FILES ${src_model})
 source_group("src\\util" FILES ${src_util})
 source_group("qrc" FILES ${qrc_files})
