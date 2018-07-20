@@ -1,10 +1,9 @@
-#include "scenario_view.h"
+#include "room_view.h"
 
 namespace gloom {
-	scenario_view::scenario_view(scenario& scenario) {
-		for (const auto& room : scenario.get_rooms()) {
-
-		}
+	room_view::room_view(const QString& resource, QGraphicsItem* parent)
+		: QGraphicsPixmapItem(QPixmap(resource), parent) { 
+		QObject::setObjectName(resource);
+		qDebug() << "room_view:" << resource;
 	}
-
 }

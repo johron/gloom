@@ -16,6 +16,8 @@ namespace gloom {
 		const QString& get_resource() const;
 		void set_resource(const QString& resource);
 
+		bool operator==(const room& other) const;
+
 	private:
 		QString m_resource;
 		std::vector<token> m_tokens;

@@ -7,6 +7,7 @@ namespace gloom {
 		scenario_view(scenario& scenario);
 
 	private:
-		
+		void add_room_view(const room& room);
+		void remove_room_view(const room& room);
 	};
 }

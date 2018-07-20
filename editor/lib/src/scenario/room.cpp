@@ -1,7 +1,8 @@
 #include "room.h"
 
 namespace gloom {
-	room::room(const resource& resource) { }
+	room::room(const resource& resource) 
+		: m_resource(resource.original()) { }
 
 	QJsonObject room::serialize() const {
 		QJsonArray tokens;
@@ -57,6 +58,10 @@ namespace gloom {
 
 	void room::set_resource(const QString& resource) { 
 		m_resource = resource;
+	}
+
+	bool room::operator==(const room& other) const {
+		return m_resource == other.m_resource;
 	}
 
 }

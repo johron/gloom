@@ -2,7 +2,8 @@
 #include "room.h"
 
 namespace gloom {
-	class scenario {
+	class scenario : public QObject {
+		Q_OBJECT
 	public:
 		scenario() = default;
 		~scenario() = default;
@@ -12,6 +13,11 @@ namespace gloom {
 
 		const std::vector<room>& get_rooms() const;
 		void add_room(room&& room);
+		void remove_room(const room& room);
+
+	signals:
+		void added_room(const room& room);
+		void removed_room(const room& room);
 
 	private:
 		std::vector<room> m_rooms;

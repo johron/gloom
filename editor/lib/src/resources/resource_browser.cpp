@@ -2,7 +2,9 @@
 #include "../util/flow_layout.h"
 
 namespace gloom {
-	resource_browser::resource_browser(resource_collection&& resources, QWidget* parent)
+	resource_browser::resource_browser(resource_collection&& resources, 
+									   std::function<void(const resource& )> on_click, 
+									   QWidget* parent)
 		: QScrollArea(parent) {
 		setWidgetResizable(true);
 
@@ -13,6 +15,7 @@ namespace gloom {
 			auto button = new QPushButton(QPixmap(resource.thumbnail()), "");
 			button->setIconSize({ 60, 60 });
 			button->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+			QObject::connect(button, &QPushButton::clicked, [on_click, resource]() { on_click(resource); });
 			content->layout()->addWidget(button);
 		}
 

@@ -18,9 +18,17 @@ namespace gloom {
 		QObject::connect(m_ui->action_save_scenario, &QAction::triggered, this, &main_window::save_scenario);
 		QObject::connect(m_ui->action_load_scenario, &QAction::triggered, this, &main_window::load_scenario);
 
-		m_ui->rooms->layout()->addWidget(new resource_browser(resources::scenario_tiles()));
-		m_ui->tokens->layout()->addWidget(new resource_browser(resources::scenario_tokens()));
-		m_ui->monsters->layout()->addWidget(new resource_browser(resources::monster_tokens()));
+		auto place_room = [&editor](const resource& resource) {
+			editor.get_scenario().add_room(room(resource));
+		};
+
+		auto log_click = [](const resource& resource) {
+			qDebug() << "clicked button:" << resource.original();
+		};
+
+		m_ui->rooms->layout()->addWidget(new resource_browser(resources::scenario_tiles(), place_room));
+		m_ui->tokens->layout()->addWidget(new resource_browser(resources::scenario_tokens(), log_click));
+		m_ui->monsters->layout()->addWidget(new resource_browser(resources::monster_tokens(), log_click));
 
 		auto& undo_stack = m_editor.get_undo_stack();
 		m_ui->info_content->layout()->addWidget(new QUndoView(&undo_stack));

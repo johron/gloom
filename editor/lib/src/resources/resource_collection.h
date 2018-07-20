@@ -51,11 +51,11 @@ namespace gloom {
 		};
 
 		struct scenario_tokens : public resource_collection {
-			scenario_tokens() : resource_collection("scenario_book/tokens") { }
+			scenario_tokens() : resource_collection("scenario_book/tokens/") { }
 		};
 
 		struct monster_tokens : public resource_collection {
-			monster_tokens() : resource_collection("scenario_book/monsters") { }
+			monster_tokens() : resource_collection("scenario_book/monsters/") { }
 		};
 	}
 }

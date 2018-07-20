@@ -2,11 +2,9 @@
 #include "../scenario.h"
 
 namespace gloom {
-	class scenario_view : public QGraphicsScene {
+	class room_view : public QObject, public QGraphicsPixmapItem {
 	public:
-		scenario_view(scenario& scenario);
+		room_view(const QString& resource, QGraphicsItem* parent = nullptr);
 
-	private:
-		
 	};
 }

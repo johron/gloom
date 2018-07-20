@@ -42,6 +42,14 @@ namespace gloom {
 
 	void scenario::add_room(room&& room) { 
 		m_rooms.emplace_back(std::move(room));
+		emit added_room(m_rooms.back());
 	}
 
+	void scenario::remove_room(const room& room) { 
+		const auto iterator = std::find(m_rooms.begin(), m_rooms.end(), room);
+		if (iterator != m_rooms.end()) {
+			emit removed_room(room);
+			m_rooms.erase(iterator);
+		}
+	}
 }

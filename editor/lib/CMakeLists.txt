@@ -7,9 +7,10 @@ find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Gui REQUIRED)
 
-set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOMOC ON)
+set(AUTOMOC_MOC_OPTIONS "-f E:/dev/gloom/editor/shared/precompiled_header.h")
 
 set(qrc_files "")
 
@@ -45,6 +46,7 @@ set(src_scenario_commands
 	"src/scenario/commands/place_monster.h")
 
 set(src_util
+	"src/util/_moc_precompiled_header_include.h"
 	"src/util/flow_layout.cpp"
 	"src/util/flow_layout.h")
 
