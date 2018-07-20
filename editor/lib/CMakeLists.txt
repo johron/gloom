@@ -18,8 +18,7 @@ set(src_editor
 	"src/editor/editor.h"
 	"src/editor/main_window.cpp"
 	"src/editor/main_window.h"
-	"src/editor/main_window.ui"
-	"src/editor/settings.h")
+	"src/editor/main_window.ui")
 
 set(src_resources
 	"src/resources/resource_browser.cpp"

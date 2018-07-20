@@ -14,9 +14,13 @@ namespace gloom {
 			monsters.append(monster.serialize());
 		}
 
+		QJsonObject room_data;
+		room_data["resource"] = get_resource();
+
 		return QJsonObject{
 			{ "tokens", std::move(tokens) },
-			{ "monsters", std::move(monsters) }
+			{ "monsters", std::move(monsters) },
+			{ "room_data", std::move(room_data) }
 		};
 	}
 
@@ -40,6 +44,10 @@ namespace gloom {
 				return false;
 			}
 		}
+
+		const auto room_data = json["room_data"].toObject();
+		set_resource(room_data["resource"].toString());
+
 		return true;
 	}
 

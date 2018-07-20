@@ -13,6 +13,7 @@
 #include <QMainWindow>
 #include <QSettings>
 #include <QMessageBox>
+#include <QFileDialog>
 
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
@@ -20,4 +21,6 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonDocument>
+
 #include <QUndoStack>
+#include <QUndoView>

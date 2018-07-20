@@ -27,5 +27,5 @@ The user can place and edit rooms, tokens and monsters in a scenario - and write
 - [ ] Set monster details for player count
 
 ### Serialization
-- [ ] Save/load scene to json
+- [X] Save/load scene to json
 - [ ] Export to pdf/image

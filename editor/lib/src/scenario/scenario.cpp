@@ -1,14 +1,18 @@
 #include "scenario.h"
 
 namespace gloom {
-
 	QJsonObject scenario::serialize() const {
 		QJsonArray rooms;
 		for (const auto& room : m_rooms) {
 			rooms.append(room.serialize());
 		}
+		
+		QJsonObject scenario_data;
 
-		return QJsonObject{ { "rooms", std::move(rooms) } };
+		return QJsonObject{ 
+			{ "rooms", std::move(rooms) },
+			{ "scenario_data", std::move(scenario_data) }
+		};
 	}
 
 	bool scenario::deserialize(QJsonObject&& json) {
