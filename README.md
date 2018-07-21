@@ -11,12 +11,14 @@ The user can place and edit rooms, tokens and monsters in a scenario - and write
 - [x] Browse available rooms
 - [x] Place room in scene
 - [x] Move rooms in scene
+- [ ] Rooms can rotate to align hexes
 - [ ] Rooms can connect via snapping
 
 ### Token placement
 - [x] Browse available tokens
 - [ ] Place tokens in scene
 - [ ] Move tokens in scene
+- [ ] Tokens can be rotated
 - [ ] Snapping placement for tokens
 
 ### Monster placement
@@ -29,3 +31,6 @@ The user can place and edit rooms, tokens and monsters in a scenario - and write
 ### Serialization
 - [X] Save/load scene to json
 - [ ] Export to pdf/image
+
+### Issues
+- [ ] Room images are not to scale
