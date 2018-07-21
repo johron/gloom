@@ -1,15 +1,12 @@
 from progressbar import ProgressBar
-from PIL import Image
-import glob
+import glob, subprocess
 
 def optimize_image(filename):
-    image = Image.open(filename)
-    image.save(filename, optimize=True)
-    return ""
+    subprocess.call("pngcrush_1_8_11_w64 -ow -rem allb -reduce -q "+ filename)
 
-original_files = glob.glob('original/**/*.png', recursive=True) + glob.glob('original/**/*.jpg', recursive=True)
+original_files = glob.glob('thumbnails/**/*.png', recursive=True)
 progrss_bar = ProgressBar()
 
-print("-- Optimizing originals")
+print("-- Optimizing thumbnails")
 for filename in progrss_bar(original_files):
     optimize_image(filename)
