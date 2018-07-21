@@ -10,7 +10,7 @@ def create_thumbnail(path, size):
     target_dir = os.path.dirname(thumbnail)
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
-    image.save(thumbnail)
+    image.save(thumbnail, optimize=True)
 
 
 all_files = glob.glob('original/**/*.png', recursive=True) + glob.glob('original/**/*.jpg', recursive=True)
