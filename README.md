@@ -9,8 +9,8 @@ The user can place and edit rooms, tokens and monsters in a scenario - and write
 
 ### Room placement
 - [x] Browse available rooms
-- [ ] Place room in scene
-- [ ] Move rooms in scene
+- [x] Place room in scene
+- [x] Move rooms in scene
 - [ ] Rooms can connect via snapping
 
 ### Token placement
