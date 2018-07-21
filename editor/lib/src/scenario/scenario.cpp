@@ -40,6 +40,10 @@ namespace gloom {
 		return m_rooms;
 	}
 
+	std::vector<room>& scenario::get_rooms() {
+		return m_rooms;
+	}
+
 	void scenario::add_room(room&& room) { 
 		m_rooms.emplace_back(std::move(room));
 		emit added_room(m_rooms.back());

@@ -2,7 +2,8 @@
 
 namespace gloom {
 	room::room(const resource& resource) 
-		: m_resource(resource.original()) { }
+		: m_resource(resource.original())
+		, m_position(0, 0) { }
 
 	QJsonObject room::serialize() const {
 		QJsonArray tokens;
@@ -17,6 +18,7 @@ namespace gloom {
 
 		QJsonObject room_data;
 		room_data["resource"] = get_resource();
+		room_data["position"] = QJsonObject{ {"x", get_position().x()}, { "y", get_position().y()} };
 
 		return QJsonObject{
 			{ "tokens", std::move(tokens) },
@@ -48,7 +50,7 @@ namespace gloom {
 
 		const auto room_data = json["room_data"].toObject();
 		set_resource(room_data["resource"].toString());
-
+		set_position({ room_data["position"]["x"].toDouble(), room_data["position"]["y"].toDouble() });
 		return true;
 	}
 
@@ -58,6 +60,14 @@ namespace gloom {
 
 	void room::set_resource(const QString& resource) { 
 		m_resource = resource;
+	}
+
+	const QPointF room::get_position() const {
+		return m_position;
+	}
+
+	void room::set_position(const QPointF& position) {
+		m_position = position;
 	}
 
 	bool room::operator==(const room& other) const {

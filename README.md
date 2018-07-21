@@ -10,6 +10,7 @@ The user can place and edit rooms, tokens and monsters in a scenario - and write
 ### Room placement
 - [x] Browse available rooms
 - [x] Place room in scene
+- [ ] Remove placed rooms
 - [x] Move rooms in scene
 - [ ] Rooms can rotate to align hexes
 - [ ] Rooms can connect via snapping

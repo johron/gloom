@@ -17,6 +17,7 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
+#include <QGraphicsSceneEvent>
 
 #include <QJsonObject>
 #include <QJsonArray>
@@ -24,3 +25,4 @@
 
 #include <QUndoStack>
 #include <QUndoView>
+#include <QMenu>

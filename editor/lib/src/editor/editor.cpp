@@ -1,16 +1,8 @@
 #include "editor.h"
 
-namespace {
-	auto make_test_scenario() {
-		auto scenario = std::make_unique<gloom::scenario>();
-		scenario->add_room(gloom::room(gloom::resources::scenario_tiles()[0]));
-		return scenario;
-	}
-}
-
 namespace gloom {
 	editor::editor() 
-		: m_scenario(::make_test_scenario()) { }
+		: m_scenario(std::make_unique<scenario>()) { }
 
 	void editor::new_scenario() {
 		m_scenario = std::make_unique<scenario>();

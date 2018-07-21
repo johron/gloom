@@ -60,11 +60,15 @@ namespace gloom {
 		const auto filename = QFileDialog::getOpenFileName(this, "Load scenario", "", "Scenario files (*.scenario)");
 		if (!filename.isEmpty()) {
 			m_editor.load_scenario(filename);
+			m_scenario_view = std::make_unique<scenario_view>(m_editor.get_scenario());
+			m_ui->graphicsView->setScene(m_scenario_view.get());
 		}		
 	}
 
 	void main_window::new_scenario() { 
 		// add warning for lost work
 		m_editor.new_scenario();
+		m_scenario_view = std::make_unique<scenario_view>(m_editor.get_scenario());
+		m_ui->graphicsView->setScene(m_scenario_view.get());
 	}
 }

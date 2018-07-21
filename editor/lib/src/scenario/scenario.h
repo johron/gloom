@@ -12,11 +12,13 @@ namespace gloom {
 		bool deserialize(QJsonObject&& json);
 
 		const std::vector<room>& get_rooms() const;
+		std::vector<room>& get_rooms();
+
 		void add_room(room&& room);
 		void remove_room(const room& room);
 
 	signals:
-		void added_room(const room& room);
+		void added_room(room& room);
 		void removed_room(const room& room);
 
 	private:
