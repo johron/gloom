@@ -2,6 +2,7 @@
 #include "ui_main_window.h"
 #include "../resources/resource_browser.h"
 #include "../resources/resource_collection.h"
+#include "../util/graphics_view_zoom.h"
 
 namespace gloom {
 	main_window::main_window(editor& editor)
@@ -10,6 +11,9 @@ namespace gloom {
 		, m_ui(std::make_unique<Ui::main_window>()) {
 		m_ui->setupUi(this);
 		m_ui->graphicsView->setScene(m_scenario_view.get());
+
+		auto zoom = new util::graphics_view_zoom(m_ui->graphicsView);
+		zoom->set_modifiers(Qt::ControlModifier);
 
 		restoreGeometry(m_editor.get_settings().value("window/geometry").toByteArray());
 		restoreState(m_editor.get_settings().value("window/state").toByteArray());
