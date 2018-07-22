@@ -4,7 +4,7 @@ namespace gloom {
 	QJsonObject scenario::serialize() const {
 		QJsonArray rooms;
 		for (const auto& room : m_rooms) {
-			rooms.append(room.serialize());
+			rooms.append(room->serialize());
 		}
 		
 		QJsonObject scenario_data;
@@ -19,8 +19,8 @@ namespace gloom {
 		try {
 			const auto rooms = json["rooms"].toArray();
 			for (const auto& room_data : rooms) {
-				m_rooms.emplace_back();
-				if (!m_rooms.back().deserialize(room_data.toObject())) {
+				m_rooms.emplace_back(std::make_unique<room>());
+				if (!m_rooms.back()->deserialize(room_data.toObject())) {
 					m_rooms.pop_back();
 					throw std::runtime_error("failed to deserialize room");
 				}
@@ -36,23 +36,30 @@ namespace gloom {
 		return true;
 	}
 
-	const std::vector<room>& scenario::get_rooms() const {
+	const room_storage& scenario::get_rooms() const {
 		return m_rooms;
 	}
 
-	std::vector<room>& scenario::get_rooms() {
+	room_storage& scenario::get_rooms() {
 		return m_rooms;
 	}
 
-	void scenario::add_room(room&& room) { 
+	const room& scenario::get_room(const QString& resource) const {
+		const auto resource_compare = [&resource](const std::unique_ptr<room>& room) { return room->get_resource() == resource; };
+		const auto iterator = std::find_if(m_rooms.begin(), m_rooms.end(), resource_compare);
+		return **iterator;
+	}
+
+	void scenario::add_room(std::unique_ptr<room> room) {
 		m_rooms.emplace_back(std::move(room));
-		emit added_room(m_rooms.back());
+		emit added_room(*m_rooms.back());
 	}
 
-	void scenario::remove_room(const room& room) { 
-		const auto iterator = std::find(m_rooms.begin(), m_rooms.end(), room);
+	void scenario::remove_room(const QString& resource) { 
+		const auto resource_compare = [&resource](const std::unique_ptr<room>& room) { return room->get_resource() == resource; };
+		const auto iterator = std::find_if(m_rooms.begin(), m_rooms.end(), resource_compare);
 		if (iterator != m_rooms.end()) {
-			emit removed_room(room);
+			emit removed_room(**iterator);
 			m_rooms.erase(iterator);
 		}
 	}

@@ -25,4 +25,7 @@
 
 #include <QUndoStack>
 #include <QUndoView>
+#include <QUndoCommand>
 #include <QMenu>
+
+#include <QKeyEvent>

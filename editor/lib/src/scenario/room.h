@@ -19,12 +19,18 @@ namespace gloom {
 		const QPointF get_position() const;
 		void set_position(const QPointF& position);
 
+		const int get_rotation() const;
+		void set_rotation(int rotation);
+
 		bool operator==(const room& other) const;
 
 	private:
 		QString m_resource;
 		QPointF m_position;
+		int m_rotation;
 		std::vector<token> m_tokens;
 		std::vector<monster> m_monsters;
 	};
+
+	using room_storage = std::vector<std::unique_ptr<room>>;
 }

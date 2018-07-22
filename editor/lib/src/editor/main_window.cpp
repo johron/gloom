@@ -3,11 +3,12 @@
 #include "../resources/resource_browser.h"
 #include "../resources/resource_collection.h"
 #include "../util/graphics_view_zoom.h"
+#include "../scenario/commands/place_room.h"
 
 namespace gloom {
 	main_window::main_window(editor& editor)
 		: m_editor(editor)
-		, m_scenario_view(std::make_unique<scenario_view>(editor.get_scenario()))
+		, m_scenario_view(std::make_unique<scenario_view>(editor, editor.get_scenario()))
 		, m_ui(std::make_unique<Ui::main_window>()) {
 		m_ui->setupUi(this);
 		m_ui->graphicsView->setScene(m_scenario_view.get());
@@ -23,7 +24,11 @@ namespace gloom {
 		QObject::connect(m_ui->action_load_scenario, &QAction::triggered, this, &main_window::load_scenario);
 
 		auto place_room = [&editor](const resource& resource) {
-			editor.get_scenario().add_room(room(resource));
+			editor.apply(new commands::place_room(resource, editor.get_scenario()));
+		};
+
+		auto remove_room = [&editor]() {
+
 		};
 
 		auto log_click = [](const resource& resource) {
@@ -60,7 +65,7 @@ namespace gloom {
 		const auto filename = QFileDialog::getOpenFileName(this, "Load scenario", "", "Scenario files (*.scenario)");
 		if (!filename.isEmpty()) {
 			m_editor.load_scenario(filename);
-			m_scenario_view = std::make_unique<scenario_view>(m_editor.get_scenario());
+			m_scenario_view = std::make_unique<scenario_view>(m_editor, m_editor.get_scenario());
 			m_ui->graphicsView->setScene(m_scenario_view.get());
 		}		
 	}
@@ -68,7 +73,7 @@ namespace gloom {
 	void main_window::new_scenario() { 
 		// add warning for lost work
 		m_editor.new_scenario();
-		m_scenario_view = std::make_unique<scenario_view>(m_editor.get_scenario());
+		m_scenario_view = std::make_unique<scenario_view>(m_editor, m_editor.get_scenario());
 		m_ui->graphicsView->setScene(m_scenario_view.get());
 	}
 }

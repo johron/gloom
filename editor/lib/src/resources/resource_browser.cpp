@@ -13,6 +13,7 @@ namespace gloom {
 		
 		for (const auto& resource : resources) {
 			auto button = new QPushButton(QPixmap(resource.thumbnail()), "");
+			button->setToolTip(QFile(resource.original()).fileName());;
 			button->setIconSize({ 60, 60 });
 			button->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 			QObject::connect(button, &QPushButton::clicked, [on_click, resource]() { on_click(resource); });

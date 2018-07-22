@@ -3,8 +3,11 @@
 
 namespace gloom {
 	class room_view : public QObject, public QGraphicsPixmapItem {
+		Q_OBJECT
 	public:
-		room_view(room& room, QGraphicsItem* parent = nullptr);
+		room_view(room& room, QObject* parent);
+
+		room& get_room();
 
 	private:
 		virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent* event) override;

@@ -11,17 +11,19 @@ namespace gloom {
 		QJsonObject serialize() const;
 		bool deserialize(QJsonObject&& json);
 
-		const std::vector<room>& get_rooms() const;
-		std::vector<room>& get_rooms();
+		const room_storage& get_rooms() const;
+		room_storage& get_rooms();
 
-		void add_room(room&& room);
-		void remove_room(const room& room);
+		const room& get_room(const QString& resource) const;
+
+		void add_room(std::unique_ptr<room> room);
+		void remove_room(const QString& resource);
 
 	signals:
 		void added_room(room& room);
 		void removed_room(const room& room);
 
 	private:
-		std::vector<room> m_rooms;
+		room_storage m_rooms;
 	};
 }
