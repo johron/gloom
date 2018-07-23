@@ -28,3 +28,11 @@ TEST(commands, remove_room) {
 	editor.redo();
 	EXPECT_EQ(scenario.get_rooms().size(), 0);
 }
+
+TEST(commands, place_token) {
+
+}
+
+TEST(commands, remove_token) {
+
+}

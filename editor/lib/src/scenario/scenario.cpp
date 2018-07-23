@@ -50,6 +50,12 @@ namespace gloom {
 		return **iterator;
 	}
 
+	room& scenario::get_room(const QString & resource) {
+		const auto resource_compare = [&resource](const std::unique_ptr<room>& room) { return room->get_resource() == resource; };
+		const auto iterator = std::find_if(m_rooms.begin(), m_rooms.end(), resource_compare);
+		return **iterator;
+	}
+
 	void scenario::add_room(std::unique_ptr<room> room) {
 		m_rooms.emplace_back(std::move(room));
 		emit added_room(*m_rooms.back());

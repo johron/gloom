@@ -15,6 +15,7 @@ namespace gloom {
 		room_storage& get_rooms();
 
 		const room& get_room(const QString& resource) const;
+		room& get_room(const QString& resource);
 
 		void add_room(std::unique_ptr<room> room);
 		void remove_room(const QString& resource);
