@@ -1,6 +1,7 @@
 #include "scenario_view.h"
 #include "room_view.h"
 #include "../commands/place_room.h"
+#include "src/util/hexagon.h"
 
 namespace gloom {
 	scenario_view::scenario_view(editor& editor, scenario& scenario)
@@ -11,6 +12,12 @@ namespace gloom {
 		for (auto& room : scenario.get_rooms()) {
 			add_room_view(*room);
 		}
+
+		auto reference_hexagon = new QGraphicsPolygonItem(util::hexagon({ 0, 0 }, 112));
+		reference_hexagon->setZValue(100);
+		reference_hexagon->setPen(QPen(Qt::red, 4));
+
+		addItem(reference_hexagon);
 	}
 
 	void scenario_view::add_room_view(room& room) { 
@@ -49,6 +56,7 @@ namespace gloom {
 				if (auto view = dynamic_cast<room_view*>(selected.front())) {
 					const auto rotation_delta = (event->delta() < 0 ? -15 : 15);
 					view->setRotation(view->rotation() + rotation_delta);
+					event->accept();
 				}
 			}
 		}

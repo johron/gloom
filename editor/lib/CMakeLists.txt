@@ -47,6 +47,7 @@ set(src_scenario_commands
 
 set(src_util
 	"src/util/_moc_precompiled_header_include.h"
+	"src/util/hexagon.h"
 	"src/util/flow_layout.cpp"
 	"src/util/flow_layout.h"
 	"src/util/graphics_view_zoom.cpp"

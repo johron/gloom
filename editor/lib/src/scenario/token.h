@@ -11,4 +11,6 @@ namespace gloom {
 			return true;
 		}
 	};
+
+	using token_storage = std::vector<std::unique_ptr<token>>;
 }

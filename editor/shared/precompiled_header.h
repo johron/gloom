@@ -6,6 +6,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QDebug>
+#include <QPolygonF>
 
 #include <QSettings>
 #include <QDir>
@@ -27,5 +28,6 @@
 #include <QUndoView>
 #include <QUndoCommand>
 #include <QMenu>
+#include <QtMath>
 
 #include <QKeyEvent>
