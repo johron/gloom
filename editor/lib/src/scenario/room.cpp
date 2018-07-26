@@ -52,7 +52,7 @@ namespace gloom {
 
 		const auto room_data = json["room_data"].toObject();
 		set_resource(room_data["resource"].toString());
-		set_position({ room_data["position"]["x"].toDouble(), room_data["position"]["y"].toDouble() });
+		set_position({ room_data["position"].toObject()["x"].toDouble(), room_data["position"].toObject()["y"].toDouble() });
 		set_rotation(room_data["rotation"].toInt());
 		return true;
 	}
