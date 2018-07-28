@@ -2,7 +2,7 @@
 #include "../scenario.h"
 
 namespace gloom {
-	class room_view : public QObject, public QGraphicsPixmapItem {
+	class room_view : public QObject, public QGraphicsItemGroup {
 		Q_OBJECT
 	public:
 		room_view(room& room, QObject* parent);

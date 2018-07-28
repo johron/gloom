@@ -2,11 +2,20 @@
 #include "monster.h"
 #include "token.h"
 #include "../resources/resource_collection.h"
+#include "../util/hexagon.h"
 
 namespace gloom {
+	struct cell {
+		cell(const hex_coordinate& pos)
+			: m_position(pos) { }
+		hex_coordinate m_position;
+
+		bool operator==(const cell& other) const { return m_position == other.m_position; }
+	};
+
 	class room {
 	public:
-		room() = default;
+		room();
 		room(const resource& resource);
 		~room() = default;
 
@@ -22,6 +31,8 @@ namespace gloom {
 		const int get_rotation() const;
 		void set_rotation(int rotation);
 
+		const std::vector<cell>& get_cells() const;
+
 		bool operator==(const room& other) const;
 
 	private:
@@ -30,6 +41,7 @@ namespace gloom {
 		int m_rotation;
 		std::vector<token> m_tokens;
 		std::vector<monster> m_monsters;
+		std::vector<cell> m_cells;
 	};
 
 	using room_storage = std::vector<std::unique_ptr<room>>;

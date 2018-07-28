@@ -1,19 +1,29 @@
 #include "room_view.h"
+#include "src/util/hexagon.h"
 
 namespace gloom {
 	room_view::room_view(room& room, QObject* parent)
 		: QObject(parent)
-		, QGraphicsPixmapItem(QPixmap(room.get_resource()))
 		, m_room(room) {
+
 		setFlag(QGraphicsItem::ItemIsMovable);
 		setFlag(QGraphicsItem::ItemIsSelectable);
 		setFlag(QGraphicsItem::ItemSendsGeometryChanges);
 		setFlag(QGraphicsItem::ItemSendsScenePositionChanges);
-		setOffset(-boundingRect().center());
-		setTransformOriginPoint(boundingRect().center());
+
+		auto background = new QGraphicsPixmapItem(room.get_resource(), this);
+		background->setOffset(-background->boundingRect().center());
+		setTransformOriginPoint(background->boundingRect().center());
+		addToGroup(background);
+
 		setPos(room.get_position());
 		setRotation(room.get_rotation());
 		setObjectName(room.get_resource());
+
+ 		const auto& cells = room.get_cells();
+ 		for (const auto& cell : cells) {
+ 			addToGroup(new hexagon(cell.m_position, 112, this));
+ 		}
 	}
 
 	room& room_view::get_room() {
@@ -22,7 +32,7 @@ namespace gloom {
 
 	void room_view::contextMenuEvent(QGraphicsSceneContextMenuEvent* event) {
 		QMenu menu;
-		if (QGraphicsPixmapItem::flags() & QGraphicsItem::ItemIsMovable) {
+		if (QGraphicsItem::flags() & QGraphicsItem::ItemIsMovable) {
 			menu.addAction("Lock room", [this]() { setFlag(QGraphicsItem::ItemIsMovable, false); });
 		} else {
 			menu.addAction("Unlock room", [this]() { setFlag(QGraphicsItem::ItemIsMovable, true); });
@@ -42,6 +52,6 @@ namespace gloom {
 			break;
 		}	
 
-		return QGraphicsPixmapItem::itemChange(change, value);
+		return QGraphicsItemGroup::itemChange(change, value);
 	}
 }

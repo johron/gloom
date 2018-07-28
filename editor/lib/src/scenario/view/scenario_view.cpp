@@ -4,41 +4,6 @@
 #include "src/util/hexagon.h"
 
 namespace gloom {
-	using hex_coordinate = std::tuple<int, int, int>;
-	QPointF to_pos(hex_coordinate c, float size) {
-		
-		const auto w = sqrt(3) * size;
-		const auto h = size * 2;
-
-		const auto y = std::get<2>(c) * h * 3/4;
-		const auto x = std::get<0>(c) * w / 2;
-		qDebug() << x << y;
-		return { x, y };
-	}
-
-
-	struct hexagon : public QGraphicsPolygonItem {
-		hexagon(hex_coordinate coordinate, float size, QGraphicsItem* parent)
-			: QGraphicsPolygonItem(util::hexagon(to_pos(coordinate, size), size), parent) { 
-			setPen(QPen(Qt::red, 4));
-		}
-	};
-
-	struct hex_pattern : public QGraphicsItemGroup {
-		hex_pattern(QGraphicsItem* parent) 
-			: QGraphicsItemGroup(parent) { 
-			setZValue(100);
-
-			addToGroup(new hexagon({ 0, 0, 0 }, 112, this));
-			addToGroup(new hexagon({ 0, 1, -1 }, 112, this));
-			addToGroup(new hexagon({ 1, 0, -1 }, 112, this));
-			addToGroup(new hexagon({ 1, -1, 0 }, 112, this));
-			addToGroup(new hexagon({ 0, -1, 1 }, 112, this));
-			addToGroup(new hexagon({ -1, 0, 1 }, 112, this));
-		}
-	};
-
-
 	scenario_view::scenario_view(editor& editor, scenario& scenario)
 		: m_editor(editor) {
 		QObject::connect(&scenario, &scenario::added_room, this, &scenario_view::add_room_view);
@@ -47,8 +12,6 @@ namespace gloom {
 		for (auto& room : scenario.get_rooms()) {
 			add_room_view(*room);
 		}
-
-		addItem(new hex_pattern(nullptr));
 	}
 
 	void scenario_view::add_room_view(room& room) { 
