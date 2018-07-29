@@ -26,6 +26,10 @@ set(src_resources
 	"src/resources/resource_browser.h"
 	"src/resources/resource_collection.h")
 
+set(src_room_builder
+	"src/scenario/room_builder/room_builder.cpp"
+	"src/scenario/room_builder/room_builder.h")
+
 set(src_scenario
 	"src/scenario/scenario.cpp"
 	"src/scenario/scenario.h"
@@ -63,6 +67,7 @@ set(all_sources
 	${src_scenario}
 	${src_scenario_view}
 	${src_scenario_commands}
+	${src_room_builder}
 	${src_precompiled}
 	${src_util}
 	${readme})
@@ -72,6 +77,7 @@ add_library(${name} ${all_sources})
 source_group("src\\editor" FILES ${src_editor})
 source_group("src\\resources" FILES ${src_resources})
 source_group("src\\scenario" FILES ${src_scenario})
+source_group("src\\room_builder" FILES ${src_room_builder})
 source_group("src\\scenario\\view" FILES ${src_scenario_view})
 source_group("src\\scenario\\commands" FILES ${src_scenario_commands})
 source_group("src\\util" FILES ${src_util})
