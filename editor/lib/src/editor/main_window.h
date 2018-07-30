@@ -1,6 +1,6 @@
 #pragma once
 #include "../scenario/view/scenario_view.h"
-#include "../scenario/room_builder/room_builder.h"
+#include "../scenario/room_builder/layout_editor.h"
 #include "editor.h"
 
 namespace Ui {

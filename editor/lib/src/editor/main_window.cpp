@@ -83,6 +83,6 @@ namespace gloom {
 // 		m_ui->graphicsView->setScene(m_scenario_view.get());
 	}
 	void main_window::save_room() { 
-		m_room_builder->save_room();
+		m_room_builder->save_layout();
 	}
 }
