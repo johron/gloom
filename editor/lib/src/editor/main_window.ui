@@ -37,6 +37,7 @@
     <addaction name="separator"/>
     <addaction name="action_save_scenario"/>
     <addaction name="action_load_scenario"/>
+    <addaction name="action_save_room"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -113,13 +114,18 @@
    <property name="toolTip">
     <string>Save the current scenario</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+S</string>
-   </property>
   </action>
   <action name="action_load_scenario">
    <property name="text">
     <string>Load scenario</string>
+   </property>
+  </action>
+  <action name="action_save_room">
+   <property name="text">
+    <string>Save Room</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
  </widget>
