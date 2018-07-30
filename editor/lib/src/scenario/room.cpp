@@ -16,12 +16,14 @@ namespace {
 
 namespace gloom {
 	room::room()
-		: m_cells(::get_cells()) { }
+		: m_cells(::get_cells()) 
+		, m_position(0, 0)
+		, m_rotation(0) { }
 	room::room(const resource& resource)
 		: m_resource(resource.original())
 		, m_position(0, 0)
 		, m_rotation(0)
-		, m_cells(get_cells()) { }
+		, m_cells(::get_cells()) { }
 
 	QJsonObject room::serialize() const {
 		QJsonArray tokens;
@@ -96,6 +98,14 @@ namespace gloom {
 
 	void room::set_rotation(int rotation) {
 		m_rotation = rotation;
+	}
+
+	const QPointF room::get_offset() const {
+		return m_offset;
+	}
+
+	void room::set_offset(const QPointF& offset) {
+		m_offset = offset;
 	}
 
 	const std::vector<cell>& room::get_cells() const {

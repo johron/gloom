@@ -31,6 +31,9 @@ namespace gloom {
 		const int get_rotation() const;
 		void set_rotation(int rotation);
 
+		const QPointF get_offset() const;
+		void set_offset(const QPointF& offset);
+
 		const std::vector<cell>& get_cells() const;
 
 		bool operator==(const room& other) const;
@@ -38,6 +41,8 @@ namespace gloom {
 	private:
 		QString m_resource;
 		QPointF m_position;
+		QPointF m_offset;
+
 		int m_rotation;
 		std::vector<token> m_tokens;
 		std::vector<monster> m_monsters;

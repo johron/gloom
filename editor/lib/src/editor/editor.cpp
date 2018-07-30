@@ -30,6 +30,15 @@ namespace gloom {
 		file.close();
 	}
 
+	void editor::make_room(const resource& resource) { 
+// 		const auto resource = resources::scenario_tiles()[0];
+// 		const auto definition = "resources/data/room_definitions/scenario_tile_a.roomdef";
+
+		m_room = std::make_unique<room>(resource);
+		m_scene.clear();
+		m_scene.addItem(new room_view(*m_room, &m_scene));
+	}
+
 	const scenario& editor::get_scenario() const {
 		return *m_scenario;
 	}
@@ -56,6 +65,10 @@ namespace gloom {
 
 	QSettings& editor::get_settings() {
 		return m_settings;
+	}
+
+	QGraphicsScene& editor::get_scene() {
+		return m_scene;
 	}
 
 }

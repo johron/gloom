@@ -7,7 +7,6 @@ namespace gloom {
 	public:
 		room_hex(hex_coordinate coordinate, QGraphicsItem* parent);
 
-
 		const hex_coordinate m_coordinate;
 		bool m_enabled;
 
@@ -16,14 +15,12 @@ namespace gloom {
 		void update_brush();
 	};
 
-	class room_builder : public QGraphicsScene {
+	class layout_editor : public QGraphicsScene {
 	public:
-		room_builder();
+		layout_editor();
 
 		void set_resource(const resource& resource);
-		void save_room();
-
-		room build();
+		void save_layout();
 
 	private:
 		virtual void keyPressEvent(QKeyEvent *event) override;

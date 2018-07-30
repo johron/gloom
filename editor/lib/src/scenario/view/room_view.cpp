@@ -12,7 +12,7 @@ namespace gloom {
 		setFlag(QGraphicsItem::ItemSendsScenePositionChanges);
 
 		auto background = new QGraphicsPixmapItem(room.get_resource(), this);
-		background->setOffset(-background->boundingRect().center());
+		background->setOffset(room.get_offset());
 		setTransformOriginPoint(background->boundingRect().center());
 		addToGroup(background);
 
@@ -22,7 +22,7 @@ namespace gloom {
 
  		const auto& cells = room.get_cells();
  		for (const auto& cell : cells) {
- 			addToGroup(new hexagon(cell.m_position, 112, this));
+ 			addToGroup(new hexagon(cell.m_position, 112.5, this));
  		}
 	}
 

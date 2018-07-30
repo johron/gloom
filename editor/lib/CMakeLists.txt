@@ -27,14 +27,15 @@ set(src_resources
 	"src/resources/resource_collection.h")
 
 set(src_room_builder
-	"src/scenario/room_builder/room_builder.cpp"
-	"src/scenario/room_builder/room_builder.h")
+	"src/scenario/room_builder/layout_editor.cpp"
+	"src/scenario/room_builder/layout_editor.h")
 
 set(src_scenario
 	"src/scenario/scenario.cpp"
 	"src/scenario/scenario.h"
 	"src/scenario/room.cpp"
 	"src/scenario/room.h"
+	"src/scenario/room_id.h"
 	"src/scenario/token.h"
 	"src/scenario/monster.h")
 

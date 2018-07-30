@@ -8,8 +8,7 @@
 namespace gloom {
 	main_window::main_window(editor& editor)
 		: m_editor(editor)
-		, m_scenario_view(std::make_unique<scenario_view>(editor, editor.get_scenario()))
-		, m_room_builder(std::make_unique<room_builder>())
+		, m_room_builder(std::make_unique<layout_editor>())
 		, m_ui(std::make_unique<Ui::main_window>()) {
 		m_ui->setupUi(this);
 		m_ui->graphicsView->setScene(m_room_builder.get());
@@ -27,6 +26,7 @@ namespace gloom {
 
 		auto make_room = [this](const resource& resource) {
 			m_room_builder->set_resource(resource);
+			//m_editor.make_room(resource);
 		};
 
 		auto place_room = [&editor](const resource& resource) {
@@ -70,17 +70,17 @@ namespace gloom {
 		// add warning for lost work
 		const auto filename = QFileDialog::getOpenFileName(this, "Load scenario", "", "Scenario files (*.scenario)");
 		if (!filename.isEmpty()) {
-			m_editor.load_scenario(filename);
-			m_scenario_view = std::make_unique<scenario_view>(m_editor, m_editor.get_scenario());
-			m_ui->graphicsView->setScene(m_scenario_view.get());
+// 			m_editor.load_scenario(filename);
+// 			m_scenario_view = std::make_unique<scenario_view>(m_editor, m_editor.get_scenario());
+// 			m_ui->graphicsView->setScene(m_scenario_view.get());
 		}		
 	}
 
 	void main_window::new_scenario() { 
 		// add warning for lost work
-		m_editor.new_scenario();
-		m_scenario_view = std::make_unique<scenario_view>(m_editor, m_editor.get_scenario());
-		m_ui->graphicsView->setScene(m_scenario_view.get());
+// 		m_editor.new_scenario();
+// 		m_scenario_view = std::make_unique<scenario_view>(m_editor, m_editor.get_scenario());
+// 		m_ui->graphicsView->setScene(m_scenario_view.get());
 	}
 	void main_window::save_room() { 
 		m_room_builder->save_room();

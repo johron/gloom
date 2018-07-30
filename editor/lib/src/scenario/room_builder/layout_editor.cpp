@@ -1,4 +1,4 @@
-#include "room_builder.h"
+#include "layout_editor.h"
 
 namespace {
 	const QColor color_disabled(120, 0, 0, 120);
@@ -23,7 +23,7 @@ namespace gloom {
 		setBrush(m_enabled ? ::color_enabled : ::color_disabled);
 	}
 
-	room_builder::room_builder()
+	layout_editor::layout_editor()
 		: m_background(nullptr) { 
 
 		std::vector<hex_coordinate> coordinates;
@@ -46,7 +46,7 @@ namespace gloom {
 		}
 	}
 
-	void room_builder::set_resource(const resource& resource) {
+	void layout_editor::set_resource(const resource& resource) {
 		if (m_background) {
 			removeItem(m_background);
 			delete m_background;
@@ -59,34 +59,26 @@ namespace gloom {
 		addItem(m_background);
 	}
 
-	void room_builder::save_room() { 
-		const auto filename = QFileDialog::getSaveFileName(nullptr, "Save room", "", "Room definition(*.roomdef)");
+	void layout_editor::save_layout() { 
+		const auto filename = QFileDialog::getSaveFileName(nullptr, "Save layout", "", "Hex layout(*.hexlayout)");
 		if (!filename.isEmpty()) {
-			QJsonObject json;
-			json["offset"] = QJsonObject{ {"x", m_background->offset().x() }, { "y", m_background->offset().y() } };
+			hex_layout layout;
 
-			QJsonArray hexagons;
-			for (const auto& hex : m_hexagons) {
+			for (const auto hex : m_hexagons) {
 				if (hex->m_enabled) {
-					hexagons.append(QJsonArray{ std::get<0>(hex->m_coordinate), std::get<1>(hex->m_coordinate), std::get<2>(hex->m_coordinate) });
+					layout.m_coordinates.emplace_back(hex->m_coordinate);
 				}
 			}
-			json["hexagons"] = hexagons;
 			
-			const auto json_data = QJsonDocument(json);
+			const auto json_data = QJsonDocument(layout.serialize());
 			QFile file(filename);
 			file.open(QFile::WriteOnly);
-			file.write(json_data.toJson());
+			file.write(json_data.toJson(QJsonDocument::Compact));
 			file.close();
 		}
 	}
 
-	room room_builder::build() {
-		return room();
-	}
-
-
-	void room_builder::keyPressEvent(QKeyEvent* event) { 
+	void layout_editor::keyPressEvent(QKeyEvent* event) { 
 		switch (event->key()) {
 		case Qt::Key_Down:
 			m_background->setOffset(m_background->offset() + QPointF(0, 1));

@@ -21,8 +21,7 @@ namespace gloom {
 		void save_room();
 
 		editor& m_editor;
+		std::unique_ptr<layout_editor> m_room_builder;
 		std::unique_ptr<Ui::main_window> m_ui;
-		std::unique_ptr<scenario_view> m_scenario_view;
-		std::unique_ptr<room_builder> m_room_builder;
 	};
 }
