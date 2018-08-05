@@ -7,11 +7,11 @@ namespace gloom {
 	class room_directory {
 	public:
 		struct entry {
-			entry(const QJsonObject& data) {
-
-			}
-
-
+			entry(const QJsonObject& data) 
+				: m_id(get_id(data["id"].toString()))
+				, m_style(get_style(data["style"].toString()))
+				, m_layout(data["layout"].toObject())
+				, m_resource(data["resource"].toObject()) { }
 			room_id m_id;
 			room_style m_style;
 			hex_layout m_layout;
@@ -27,6 +27,17 @@ namespace gloom {
 
 		size_t size() const {
 			return m_entries.size();
+		}
+
+		template <typename T>
+		std::vector<entry> get_rooms(const T& predicate) const {
+			std::vector<entry> results;
+			for (const auto& entry : m_entries) {
+				if (predicate(entry)) {
+					results.emplace_back(entry);
+				}
+			}
+			return results;
 		}
 
 	private:

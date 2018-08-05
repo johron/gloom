@@ -19,7 +19,8 @@ set(src_editor
 	"src/editor/editor.h"
 	"src/editor/main_window.cpp"
 	"src/editor/main_window.h"
-	"src/editor/main_window.ui")
+	"src/editor/main_window.ui"
+	"src/editor/room_browser.ui")
 
 set(src_layout_editor
 	"src/editor/layout/layout_editor.cpp"
@@ -36,7 +37,8 @@ set(src_room
 	"src/scenario/room/room_factory.h"
 	"src/scenario/room/room.cpp"
 	"src/scenario/room/room.h"
-	"src/scenario/room/room_id.h")
+	"src/scenario/room/room_id.h"
+	"src/scenario/room/room_filter.h")
 
 set(src_scenario
 	"src/scenario/scenario.cpp"

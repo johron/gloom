@@ -72,4 +72,12 @@ namespace gloom {
 
 		return static_cast<room_style>(style_names.indexOf(style));
 	}
+
+	inline QString get_style_name(room_style style) {
+		static const QStringList style_names{
+			"stone", "wood", "earth", "cave"
+		};
+
+		return style_names[static_cast<int>(style)];
+	}
 }
