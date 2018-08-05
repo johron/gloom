@@ -1,8 +1,9 @@
 #pragma once
-#include "monster.h"
-#include "token.h"
-#include "../resources/resource_collection.h"
-#include "../util/hexagon.h"
+#include "../monster.h"
+#include "../token.h"
+#include "../../resources/resource_collection.h"
+#include "../../util/hexagon.h"
+#include "room_id.h"
 
 namespace gloom {
 	struct cell {
@@ -15,9 +16,11 @@ namespace gloom {
 
 	class room {
 	public:
-		room();
+		room(room_id id);
 		room(const resource& resource);
 		~room() = default;
+
+		room_id get_id() const;
 
 		QJsonObject serialize() const;
 		bool deserialize(const QJsonObject& json);
@@ -39,6 +42,8 @@ namespace gloom {
 		bool operator==(const room& other) const;
 
 	private:
+		room_id m_id;
+
 		QString m_resource;
 		QPointF m_position;
 		QPointF m_offset;

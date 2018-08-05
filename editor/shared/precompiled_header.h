@@ -31,3 +31,7 @@
 #include <QtMath>
 
 #include <QKeyEvent>
+
+
+#include "../lib/src/util/file_util.h"
+#include "../lib/src/util/path_util.h"

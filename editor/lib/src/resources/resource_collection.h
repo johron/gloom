@@ -4,17 +4,30 @@ namespace gloom {
 	// this is written with the assumption that resources won't change after application start.
 
 	struct resource : private std::pair<QString, QString> {
+		resource() = default;
 		resource(const QString& first, const QString& second)
 			: std::pair<QString, QString>(first, second) { }
+		resource(const QJsonObject& data) {
+			deserialize(data);
+		}
 
 		const QString& original() const { return first; }
 		const QString& thumbnail() const { return second; }
+
+		QJsonObject serialize() const {
+			return QJsonObject{ {"original", original()}, {"thumbnail", thumbnail()} };
+		}
+
+		void deserialize(const QJsonObject& data) {
+			first = data["original"].toString();
+			second = data["thumbnail"].toString();
+		}
 	};
 
 	struct resource_collection {
 		resource_collection(const QString& path) {
 			const auto resource_path = "../resources/original/" + path;
-			const auto thumbnail_path = "../resources/thumbnails/" + path;
+			const auto thumbnail_path = "../resources/thumbnail/" + path;
 			const auto resource_files = QDir(resource_path).entryList(QDir::Filter::Files);
 			const auto thumbnail_files = QDir(thumbnail_path).entryList(QDir::Filter::Files);
 			for (int i=0; i<resource_files.size(); ++i) {

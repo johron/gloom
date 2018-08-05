@@ -2,6 +2,7 @@ set(name "gloom-tests")
 
 set(src_files
 	"src/commands.cpp"
+	"src/file_util.cpp"
 	"src/room.cpp"
 	"src/scenario.cpp"
 	"src/resource_path.cpp")

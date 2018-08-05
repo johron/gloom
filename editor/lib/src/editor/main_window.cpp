@@ -8,10 +8,9 @@
 namespace gloom {
 	main_window::main_window(editor& editor)
 		: m_editor(editor)
-		, m_room_builder(std::make_unique<layout_editor>())
 		, m_ui(std::make_unique<Ui::main_window>()) {
 		m_ui->setupUi(this);
-		m_ui->graphicsView->setScene(m_room_builder.get());
+		//m_ui->graphicsView->setScene(m_room_builder.get());
 
 		auto zoom = new util::graphics_view_zoom(m_ui->graphicsView);
 		zoom->set_modifiers(Qt::ControlModifier);
@@ -25,7 +24,7 @@ namespace gloom {
 		QObject::connect(m_ui->action_save_room, &QAction::triggered, this, &main_window::save_room);
 
 		auto make_room = [this](const resource& resource) {
-			m_room_builder->set_resource(resource);
+			//m_room_builder->set_resource(resource);
 			//m_editor.make_room(resource);
 		};
 
@@ -83,6 +82,5 @@ namespace gloom {
 // 		m_ui->graphicsView->setScene(m_scenario_view.get());
 	}
 	void main_window::save_room() { 
-		m_room_builder->save_layout();
 	}
 }

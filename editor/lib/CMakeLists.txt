@@ -21,21 +21,26 @@ set(src_editor
 	"src/editor/main_window.h"
 	"src/editor/main_window.ui")
 
+set(src_layout_editor
+	"src/editor/layout/layout_editor.cpp"
+	"src/editor/layout/layout_editor.h")
+
 set(src_resources
 	"src/resources/resource_browser.cpp"
 	"src/resources/resource_browser.h"
 	"src/resources/resource_collection.h")
 
-set(src_room_builder
-	"src/scenario/room_builder/layout_editor.cpp"
-	"src/scenario/room_builder/layout_editor.h")
+set(src_room
+	"src/scenario/room/room_directory.h"
+	"src/scenario/room/room_factory.cpp"
+	"src/scenario/room/room_factory.h"
+	"src/scenario/room/room.cpp"
+	"src/scenario/room/room.h"
+	"src/scenario/room/room_id.h")
 
 set(src_scenario
 	"src/scenario/scenario.cpp"
 	"src/scenario/scenario.h"
-	"src/scenario/room.cpp"
-	"src/scenario/room.h"
-	"src/scenario/room_id.h"
 	"src/scenario/token.h"
 	"src/scenario/monster.h")
 
@@ -53,6 +58,8 @@ set(src_scenario_commands
 set(src_util
 	"src/util/_moc_precompiled_header_include.h"
 	"src/util/hexagon.h"
+	"src/util/file_util.h"
+	"src/util/path_util.h"
 	"src/util/flow_layout.cpp"
 	"src/util/flow_layout.h"
 	"src/util/graphics_view_zoom.cpp"
@@ -64,7 +71,9 @@ set(readme
 set(all_sources
 	${qrc_files}
 	${src_editor}
+	${src_layout_editor}
 	${src_resources}
+	${src_room}
 	${src_scenario}
 	${src_scenario_view}
 	${src_scenario_commands}
@@ -76,11 +85,13 @@ set(all_sources
 add_library(${name} ${all_sources})
 
 source_group("src\\editor" FILES ${src_editor})
+source_group("src\\editor\\layout" FILES ${src_layout_editor})
 source_group("src\\resources" FILES ${src_resources})
 source_group("src\\scenario" FILES ${src_scenario})
 source_group("src\\room_builder" FILES ${src_room_builder})
 source_group("src\\scenario\\view" FILES ${src_scenario_view})
 source_group("src\\scenario\\commands" FILES ${src_scenario_commands})
+source_group("src\\scenario\\room" FILES ${src_room})
 source_group("src\\util" FILES ${src_util})
 source_group("src\\precompiled" FILES ${src_precompiled})
 source_group("files\\qrc" FILES ${qrc_files})

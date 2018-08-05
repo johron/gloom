@@ -15,8 +15,9 @@ namespace {
 }
 
 namespace gloom {
-	room::room()
+	room::room(room_id id)
 		: m_cells(::get_cells()) 
+		, m_id(id)
 		, m_position(0, 0)
 		, m_rotation(0) { }
 	room::room(const resource& resource)
@@ -24,6 +25,10 @@ namespace gloom {
 		, m_position(0, 0)
 		, m_rotation(0)
 		, m_cells(::get_cells()) { }
+
+	room_id room::get_id() const {
+		return m_id;
+	}
 
 	QJsonObject room::serialize() const {
 		QJsonArray tokens;

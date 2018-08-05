@@ -13,10 +13,10 @@ namespace gloom {
 				, m_scenario(scenario) { }
 
 			virtual void redo() override {
-				auto created_room = std::make_unique<room>();
-				if (created_room->deserialize(m_room_data)) {
-					m_scenario.add_room(std::move(created_room));
-				}
+// 				auto created_room = std::make_unique<room>();
+// 				if (created_room->deserialize(m_room_data)) {
+// 					m_scenario.add_room(std::move(created_room));
+// 				}
 			}
 
 			virtual void undo() override {
@@ -42,10 +42,10 @@ namespace gloom {
 			}
 
 			virtual void undo() override {
-				auto created_room = std::make_unique<room>();
-				if (created_room->deserialize(m_room_data)) {
-					m_scenario.add_room(std::move(created_room));
-				} 
+// 				auto created_room = std::make_unique<room>();
+// 				if (created_room->deserialize(m_room_data)) {
+// 					m_scenario.add_room(std::move(created_room));
+// 				} 
 			}
 
 		private:

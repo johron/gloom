@@ -18,13 +18,13 @@ namespace gloom {
 	bool scenario::deserialize(QJsonObject&& json) {
 		try {
 			const auto rooms = json["rooms"].toArray();
-			for (const auto& room_data : rooms) {
-				m_rooms.emplace_back(std::make_unique<room>());
-				if (!m_rooms.back()->deserialize(room_data.toObject())) {
-					m_rooms.pop_back();
-					throw std::runtime_error("failed to deserialize room");
-				}
-			}
+// 			for (const auto& room_data : rooms) {
+// 				m_rooms.emplace_back(std::make_unique<room>());
+// 				if (!m_rooms.back()->deserialize(room_data.toObject())) {
+// 					m_rooms.pop_back();
+// 					throw std::runtime_error("failed to deserialize room");
+// 				}
+// 			}
 		} catch (const std::exception& exception) {
 			qCritical() << exception.what();
 			if (QMessageBox::critical(nullptr, "Serialization error", exception.what(),

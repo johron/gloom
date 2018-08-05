@@ -1,8 +1,76 @@
 {
   "rooms": [
     {
-      "room_id": "a1a",
-      "layout": "../"
+      "id": "a1a",
+      "style": "stone",
+      "layout": "../data/room_layouts/scenario_tile_a.hexlayout",
+      "resource": {
+        "thumbnail": "../thumbnail/scenario_book/scenario_tiles/a1a-man-made_stone_u1.png",
+        "original": "../original/scenario_book/scenario_tiles/a1a-man-made_stone_u1.png"
+      }
+    },
+    {
+      "id": "a1b",
+      "style": "wood",
+      "layout": "../data/room_layouts/scenario_tile_a.hexlayout",
+      "resource": {
+        "thumbnail": "../thumbnail/scenario_book/scenario_tiles/a1b-man-made_wood_d1.png",
+        "original": "../original/scenario_book/scenario_tiles/a1b-man-made_wood_d1.png"
+      }
+    },
+    {
+      "id": "a2a",
+      "style": "stone",
+      "layout": "../data/room_layouts/scenario_tile_a.hexlayout",
+      "resource": {
+        "thumbnail": "../thumbnail/scenario_book/scenario_tiles/a2a-man-made_stone_u2.png",
+        "original": "../original/scenario_book/scenario_tiles/a2a-man-made_stone_u2.png"
+      }
+    },
+    {
+      "id": "a2b",
+      "style": "cave",
+      "layout": "../data/room_layouts/scenario_tile_a.hexlayout",
+      "resource": {
+        "thumbnail": "../thumbnail/scenario_book/scenario_tiles/a2b-natural_stone_d.png",
+        "original": "../original/scenario_book/scenario_tiles/a2b-natural_stone_d.png"
+      }
+    },
+    {
+      "id": "a3a",
+      "style": "cave",
+      "layout": "../data/room_layouts/scenario_tile_a.hexlayout",
+      "resource": {
+        "thumbnail": "../thumbnail/scenario_book/scenario_tiles/a3a-natural_stone_u.png",
+        "original": "../original/scenario_book/scenario_tiles/a3a-natural_stone_u.png"
+      }
+    },
+    {
+      "id": "a3b",
+      "style": "stone",
+      "layout": "../data/room_layouts/scenario_tile_a.hexlayout",
+      "resource": {
+        "thumbnail": "../thumbnail/scenario_book/scenario_tiles/a3b-man-made_stone_d1.png",
+        "original": "../original/scenario_book/scenario_tiles/a3b-man-made_stone_d1.png"
+      }
+    },
+    {
+      "id": "a4a",
+      "style": "earth",
+      "layout": "../data/room_layouts/scenario_tile_a.hexlayout",
+      "resource": {
+        "thumbnail": "../thumbnail/scenario_book/scenario_tiles/a4a-earth_u1.png",
+        "original": "../original/scenario_book/scenario_tiles/a4a-earth_u1.png"
+      }
+    },
+    {
+      "id": "a4b",
+      "style": "stone",
+      "layout": "../data/room_layouts/scenario_tile_a.hexlayout",
+      "resource": {
+        "thumbnail": "../thumbnail/scenario_book/scenario_tiles/a4b-man-made_stone_d2.png",
+        "original": "../original/scenario_book/scenario_tiles/a4b-man-made_stone_d2.png"
+      }
     }
   ]
 }

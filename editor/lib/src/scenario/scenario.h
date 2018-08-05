@@ -1,5 +1,5 @@
 #pragma once
-#include "room.h"
+#include "room/room.h"
 
 namespace gloom {
 	class scenario : public QObject {

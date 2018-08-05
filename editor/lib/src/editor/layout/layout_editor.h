@@ -1,6 +1,7 @@
 #pragma once
 #include <unordered_set>
-#include "../room.h"
+#include "../../util/hexagon.h"
+#include "../../resources/resource_collection.h"
 
 namespace gloom {
 	class room_hex : public hexagon {
